@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <title>Adrasteia</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -69,7 +70,8 @@
                     </div>
                     <div class="btn-header">
                         <button type="button" id="open-form-button" class="btn btn__header popup-link"
-                            href="#popup">Оформить заявку</button>
+                            title="Нажмите, чтобы оформить заявку!">Оформить
+                            заявку</button>
                     </div>
                     <div class="menu__icon">
                         <span></span>
@@ -79,7 +81,7 @@
         </header>
 
         <main class="main">
-
+            <!-- Блок  главная -->
             <section id="about" class="about">
                 <div class="container">
                     <div class="about__inner">
@@ -114,16 +116,25 @@
                 </div>
             </section>
 
+            <!-- блок "Акция" -->
+            <section class="timer__time">
+                <h1>Скидка 20% на первый заказ</h1>
+                <h2>До окончания акции осталось</h2>
+                <p id="countdown"></p>
+            </section>
+
+
+            <!-- Блок "Кто мы" -->
             <section id="mission" class="mission">
                 <div class="container text-sm-start text-md-center">
-                    <h1 class="mission__title">Кто мы</h1>
+                    <h1 class="mission__title">Кто мы?</h1>
                     <p class="fw-lighter mission__title__down">
                         О нас не пишут рейтинговые агентства <br>и поисковые системы
                     </p>
                     <div class="mission__content-wrapper">
                         <div class="mission__content">
                             <div class="m1 ">
-                                <img src="./img/pins-5.png" class="m1__img">
+                                <img src="./img/pins-5.png" class="m1__img" alt="img">
                             </div>
                             <!-- <div class="point"> -->
                             <div class="point point-1">
@@ -182,136 +193,8 @@
                     </div>
                 </div>
             </section>
-            <!-- <section data-goto=".services" class="services">
-                <div class="container">
-                    <div class="services__info">
-                        <h2 class="services__title">
-                            Услуги
-                        </h2>
-                        <h6 class="services__subtitle">
-                            Когда другие бессильны - мы делаем
-                        </h6>
-                        <span class="services__arrow"></span>
-                    </div>
-                    <div class="services__inner">
-                        <div class="services__box">
-                            <img class="services__img" src="img/services-img-1.png" alt="services img">
-                            <h4 class="services__text">
-                                Работа с информацией
-                            </h4>
-                            <ul class="services__box-list">
-                                <li class="services__box-item">
-                                    - Поиск и проверка информации
-                                </li>
-                                <li class="services__box-item">
-                                    - Составление персонального досье
-                                </li>
-                                <li class="services__box-item">
-                                    - Работа с репутацией (защита персональных данных)
-                                </li>
-                                <li class="services__box-item">
-                                    - Информация по номеру телефона
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="services__box">
-                            <img class="services__img" src="img/services-img-2.png" alt="services img">
-                            <h4 class="services__text">
-                                Розыск
-                            </h4>
-                            <ul class="services__box-list">
-                                <li class="services__box-item">
-                                    - Розыск должника/мошенника
-                                </li>
-                                <li class="services__box-item">
-                                    - Поиск пропавших людей
-                                </li>
-                                <li class="services__box-item">
-                                    - Поиск родственников
-                                </li>
-                                <li class="services__box-item">
-                                    - Поиск имущества
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="services__box">
-                            <img class="services__img" src="img/services-img-3.png" alt="services img">
-                            <h4 class="services__text">
-                                Слежка и наблюдение
-                            </h4>
-                            <ul class="services__box-list">
-                                <li class="services__box-item">
-                                    - Наружное наблюдение </li>
-                                <li class="services__box-item">
-                                    - Контрнаблюдение </li>
-                                <li class="services__box-item">
-                                    - Проверка образа жизни ребенка </li>
-                            </ul>
-                        </div>
-                        <div class="services__box">
-                            <img class="services__img" src="img/services-img-4.png" alt="services img">
-                            <h4 class="services__text">
-                                Бизнес-разведка
-                            </h4>
-                            <ul class="services__box-list">
-                                <li class="services__box-item">
-                                    - Проверка контрагентов
-                                </li>
-                                <li class="services__box-item">
-                                    - Досье на компанию
-                                </li>
-                                <li class="services__box-item">
-                                    - Внештатная служба безопасности
-                                </li>
-                                <li class="services__box-item">
-                                    - Корпоративное расследование
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="services__box">
-                            <img class="services__img" src="img/services-img-5.png" alt="services img">
-                            <h4 class="services__text">
-                                Сопровождение гражданских дел
-                            </h4>
-                            <ul class="services__box-list">
-                                <li class="services__box-item">
-                                    1. Оказание юридической помощи
-                                </li>
-                                <li class="services__box-item">
-                                    2. Частное расследование преступлений 
-                                </li>
-                                <li class="services__box-item">
-                                    3. Содействие правоохранительным органам
-                                </li>
-                                <li class="services__box-item">
-                                    4. Досудебное урегулирование конфликтов.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="services__box">
-                            <img class="services__img" src="img/services-img-6.png" alt="services img">
-                            <h4 class="services__text">
-                                Защита
-                            </h4>
-                            <ul class="services__box-list">
-                                <li class="services__box-item">
-                                    1. Защита при шантаже и угрозах
-                                </li>
-                                <li class="services__box-item">
-                                    2. Безопасность семьи и детей
-                                </li>
-                                <li class="services__box-item">
-                                    3. Помощь в подготовке и сопровождение в поездках.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button class="button button__services">
-                        <a class="button__link popup-link" href="#popup">Оформить заявку</a>
-                    </button>
-                </div>
-            </section> -->
 
+            <!-- Блок "Услуги" -->
             <section id="services" class="services">
                 <div class="container">
                     <div class="services__info">
@@ -326,7 +209,7 @@
                                 <img src="./img/btn-left.png" alt="">
                             </button>
                             <button class="next-slide">
-                                <img src="./img/btn-right.png" class="btn-prev-slide">
+                                <img src="./img/btn-right.png" class="btn-prev-slide" alt="img">
                             </button>
                         </span>
                     </div>
@@ -464,6 +347,7 @@
                 </div>
             </section>
 
+            <!-- Блок "Как мы работаем" -->
             <section id="work" class="work">
                 <div class="container">
                     <div class="work__inner">
@@ -496,7 +380,7 @@
                     </div>
                 </div>
             </section>
-
+            <!-- Блок "Наши клиенты" -->
             <section id="clients" class="clients">
                 <div class="container">
                     <div class="clients__inner">
@@ -544,6 +428,7 @@
                 </div>
             </section>
 
+            <!-- Блок "Связаться с нами" -->
             <section id="connection" class="connection">
                 <div class="container">
                     <div class="connection__top">
@@ -551,9 +436,8 @@
                             Связаться с нами
                         </h3>
 
-                        <a class="about__img-link" href="#header">
-                            <img class="connection__arrow" src="./img/about-arrow-down.png" alt="arrow">
-                        </a>
+                        <a class="about__img-link-1 connection__arrow-container" id="scrollToTop">
+                            <img class="connection__arrow" src="./img/about-arrow-down.png" alt="arrow"> </a>
                     </div>
 
 
@@ -591,14 +475,14 @@
                                     Согласие на обработку персональных данных</p>
                             </div>
                             <button class="button button__bottom">
-                                <a class="button__link popup-link transform" href="#popup-2">Оформить заявку</a>
+                                <a class="button__link popup-link transform">Оформить заявку</a>
                             </button>
                         </div>
                     </div>
                 </div>
 
             </section>
-
+            <!-- Блок "Оформить заявку" -->
             <div id="popup" class="popup">
                 <div class="container">
                     <div class="popup__body">
@@ -656,7 +540,7 @@
                                                 Согласие на обработку персональных данных</p>
                                         </div>
 
-                                        <button class="btn btn-popup__down" id="submit" href="#header">
+                                        <button class="btn btn-popup__down" id="submit">
                                             Оформить заявку
                                         </button>
                                     </div>
@@ -666,17 +550,29 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Блок "Заявка отправлена" -->
             <div id="success-message" class="success-message">
-                <img src="./img/circle-check-b.png" width="51px" height="51px">
+                <img src="./img/circle-check-b.png" alt="img">
                 <h3>Заявка отправлена!</h3>
                 <p>Наш менеджер свяжется с вами в ближайшее время!</p>
                 <button class="btn btn-lg success-message-btn" id="return-to-site" href="#header">Вернуться на
                     сайт</button>
             </div>
 
-        </main>
+            <!-- блок рекламы -->
+            <div class="ad-banner" id="adBanner">
+                <h2>Продажа видеокамер наблюдения</h2>
+                <p>Лучшие цены на рынке! Не упустите возможность!</p>
+                <p>Телефон: <strong>+7 (123) 456-78-90</strong></p>
+                <div class="timer" id="timer"></div>
+            </div>
 
+
+
+
+
+        </main>
+        <!-- Подвал -->
         <footer class="footer" id="footer">
             <div class="container">
                 <div class="footer__inner">
@@ -700,16 +596,30 @@
             </div>
         </footer>
     </div>
-    
+
+    <!-- модальное окно для изображений -->
+    <div id="img-modal" class="img-modal">
+        <span class="img-modal__close">&times;</span>
+        <img class="img-modal__content" id="img-modal-content">
+    </div>
+
+    <!-- Подключение скриптов -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/menu.js"></script>
     <script src="./js/slider_switch.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="./js/form.js"></script>
     <script src="./js/mask.js"></script>
-
+    <script src="./js/btn_top.js"></script>
+    <script src="./js/reclames.js"></script>
+    <script src="./js/btn_help.js"></script>
+    <script src="./js/mission_text.js"></script>
+    <script src="./js/services_img.js"></script>
+    <script src="./js/action.js"></script>
 </body>
 
 </html>

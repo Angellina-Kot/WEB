@@ -1,3 +1,4 @@
+//появление меню
 const o = document.querySelector(".menu__icon"), 
 r = document.querySelector(".menu__body"); 
 o && o.addEventListener("click",

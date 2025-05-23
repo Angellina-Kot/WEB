@@ -1,3 +1,4 @@
+//маска ввода
 document.addEventListener('DOMContentLoaded', function () {
     // Используем метод inputmask для настройки формата ввода
     $('#phone-input').inputmask({

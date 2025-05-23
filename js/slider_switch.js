@@ -1,3 +1,4 @@
+//слайдер
 $('.prev-slide').on('click', function () {
     $('.services__inner').slick('slickPrev');
 });
@@ -33,7 +34,7 @@ $(".services__inner").slick({
 });
 
 
-// document.getElementById('return-to-site').addEventListener('click', function () {
-//     document.getElementById('success-message').style.display = 'none';
-//     window.scrollTo({ top: 0, behavior: 'smooth' }); // Возвращаемся плавно в начало страницы
+document.getElementById('return-to-site').addEventListener('click', function () {
+    document.getElementById('success-message').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Возвращаемся плавно в начало страницы
 });
