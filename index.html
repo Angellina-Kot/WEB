@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style_lr_17.css">
+    <link rel="stylesheet" href="./css/style_lr_18.css">
 </head>
 
 <body>
@@ -68,7 +70,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="btn-header">
+                    <div class="btn-header open-form-button">
                         <button type="button" id="open-form-button" class="btn btn__header popup-link"
                             title="Нажмите, чтобы оформить заявку!">Оформить
                             заявку</button>
@@ -92,7 +94,8 @@
                             <p class="about__text">
                                 Владеешь информацией - владеешь миром
                             </p>
-                            <button class="button">
+
+                            <button class="button open-form-button">
                                 <a class="button__link popup-link" href="#popup">Оформить заявку</a>
                             </button>
                         </div>
@@ -100,7 +103,7 @@
                             <img class="about__img" src="img/about-main.png" alt="">
                         </div>
                     </div>
-                    <button class="button button__lock">
+                    <button class="button button__lock open-form-button">
                         <a class="button__link popup-link" href="#header">Оформить заявку</a>
                     </button>
                     <div class="about__down">
@@ -428,7 +431,7 @@
             </section>
 
             <!-- Блок "Связаться с нами" -->
-            <section id="connection" class="connection">
+            <!-- <section id="connection" class="connection">
                 <div class="container">
                     <div class="connection__top">
                         <h3 class="connection__subtitle">
@@ -462,7 +465,7 @@
                         </div>
                         <div class="connection__form">
                             <div class="popup__down__agree">
-                                <!-- <img class="popup__down__agree-img" src="./img/circle-check.png" alt=""> -->
+                                
 
                                 <label class="custom-checkbox">
                                     <input type="checkbox" id="consent">
@@ -480,7 +483,48 @@
                     </div>
                 </div>
 
+            </section> -->
+            <section id="connection" class="connection">
+                <div class="container">
+                    <div class="connection__top">
+                        <h3 class="connection__subtitle">Связаться с нами</h3>
+                    </div>
+
+                    <div class="connection__inner">
+                        <div class="connection__name">
+                            <p class="connection__title">Меня зовут</p>
+                            <input class="connection__input" type="text" id="name" placeholder="Караникола Евгений"
+                                required>
+                            <div class="error-message" id="name-error">Пожалуйста, введите ваше имя.</div>
+                        </div>
+                        <div class="connection__number">
+                            <p class="connection__title">Мой номер</p>
+                            <input id="phone-input" class="connection__input" type="tel" placeholder="+7 (___) ___-____"
+                                required pattern="^\+7 \(\d{3}\) \d{3}-\d{4}$" title="Формат: +7 (999) 999-9999">
+                            <div class="error-message" id="phone-error">Пожалуйста, введите корректный номер.</div>
+                        </div>
+                        <div class="connection__mail">
+                            <p class="connection__title">Мой email</p>
+                            <input class="connection__input" type="email" id="email" placeholder="example@gmail.com"
+                                required>
+                            <div class="error-message" id="email-error">Пожалуйста, введите корректный email.</div>
+                        </div>
+                        <div class="connection__form">
+                            <div class="popup__down__agree">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="consent" required>
+                                    <span class="checkbox-icon"></span>
+                                </label>
+                                <p class="popup__down__agree-text">Согласие на обработку персональных данных</p>
+                            </div>
+                            <button type="button" class="button button__bottom" id="submit-button">Оформить
+                                заявку</button>
+                            <div class="success" id="success-message">Форма успешно отправлена!</div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
             <!-- Блок "Оформить заявку" -->
             <div id="popup" class="popup">
                 <div class="container">
@@ -499,25 +543,36 @@
                                         <p class="popup__title">
                                             Меня зовут
                                         </p>
-                                        <input class="popup__input" type="text" placeholder="Меня зовут">
+                                        <input class="popup__input" id="name-1" type="text" placeholder="Меня зовут" required>
                                     </div>
                                     <div class="popup__name">
                                         <p class="popup__title">
                                             Мой email
                                         </p>
-                                        <input class="popup__input" type="text" placeholder="example@gmail.com">
+                                        <input class="popup__input" id="email-1" type="email" placeholder="example@gmail.com">
                                     </div>
                                     <div class="popup__name">
                                         <p class="popup__title">
                                             Мой номер
                                         </p>
-                                        <input class="popup__input" type="text" placeholder="Мой номер">
+                                        <input class="popup__input" id="phone-1" type="text" placeholder="Мой номер">
                                     </div>
                                     <div class="popup__check">
                                         <p>Это срочная задача?</p>
-                                        <label class="toggle-switch">
-                                            <input type="checkbox" id="urgent-toggle" onchange="toggleUrgency(this)">
-                                            <span class="slider-1"></span> </label>
+                                        <label class="toggle-switch"
+                                            ondblclick="alert('Не нервниичайте, попробуйте снова..')"
+                                            onmousedown="return true">
+                                            <input type="checkbox" id="urgent-toggle-1" ">
+                                            <span class=" slider-1"></span> </label>
+                                    </div>
+                                    
+                                    <p class="popup__check_down">Насколько она срочная?</p>
+                                    <i>(перетащите ползунок в зависимости от сросности)</i>
+                                    <div class="slider-wrapper">
+                                        <div id="slider" class="slider">
+                                            <div class="thumb"></div>
+                                        </div>
+                                        <div id="slider-value" class="slider-value">0%</div>
                                     </div>
                                 </div>
                                 <div class="popup__comment">
@@ -527,11 +582,11 @@
                                         комментарий если посчитаете
                                         нужным это сделать
                                     </p>
-                                    <input class="popup__input" type="text" placeholder="Комментарий">
+                                    <input class="popup__input" id="comment-1" type="text" placeholder="Комментарий">
                                     <div class="popup__down">
                                         <div class="popup__down__agree">
                                             <label class="custom-checkbox">
-                                                <input type="checkbox" id="consent">
+                                                <input type="checkbox" id="consent-1">
                                                 <span class="checkbox-icon"></span>
                                             </label>
 
@@ -611,7 +666,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/min/jquery.inputmask.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="./js/form.js"></script>
+    <script src="./js/form-1.js"></script>
     <script src="./js/mask.js"></script>
     <script src="./js/btn_top.js"></script>
     <script src="./js/reclames.js"></script>
@@ -619,6 +674,8 @@
     <script src="./js/mission_text.js"></script>
     <script src="./js/services_img.js"></script>
     <script src="./js/action.js"></script>
+    <script src="./js/lr_17.js"></script>
+    <script src="./js/lr_18.js"></script>
 </body>
 
 </html>

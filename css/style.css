@@ -1419,7 +1419,7 @@ span.services__arrow {
 }
 
 .popup__comment {
-  margin-top: 55px;
+  margin-top: -7px;
   margin-left: 70px;
   max-width: 500px;
   /* Ограничение ширины блока */
@@ -1500,6 +1500,8 @@ body.lock {
   font-size: 15px;
 }
 
+
+
 .toggle-switch {
   position: relative;
   width: 115px;
@@ -1540,7 +1542,6 @@ body.lock {
 .popup__check {
   display: flex;
   align-items: center;
-
 }
 
 input:checked+.slider-1 {

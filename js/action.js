@@ -1,5 +1,5 @@
 // таймер для акции
-let deadline = new Date("August 2, 2025"); // Дата окончания
+let deadline = new Date("December 3, 2025"); // Дата окончания
 
 function updateCountdown() {
     const now = new Date().getTime();
