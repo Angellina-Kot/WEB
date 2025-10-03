@@ -1218,6 +1218,75 @@ span.services__arrow {
   top: 20%;
 }
 
+/* авторизация */
+.login {
+  padding-top: 90px;
+}
+
+.login__subtitle {
+  font-size: 84px;
+  line-height: 100%;
+  margin-bottom: 120px;
+}
+
+.login__title {
+  font-size: 34px;
+  line-height: 100%;
+  margin-right: 5px;
+  min-width: 180px;
+}
+
+.login__inner {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  /* Одна колонка для авторизации */
+  gap: 10px;
+  border-bottom: 1px solid var(--color3);
+  padding-bottom: 50px;
+}
+
+.login__mail,
+.login__password {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: left;
+  align-items: center;
+}
+
+.login__input {
+  padding: 13px 0 13px 10px;
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 15px;
+  line-height: 100%;
+  color: var(--color2);
+  max-width: 450px;
+  border-bottom: 1px solid var(--color2);
+}
+
+.login__input::placeholder {
+  font: normal 400 24px/100% "Roboto Condensed", sans-serif;
+  letter-spacing: -0.03em;
+  color: var(--color4);
+}
+
+.login__form {
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button.button__bottom {
+  padding: 23px 68px 22px 15px;
+}
+
+.button.button__bottom::after {
+  width: 43px;
+  height: 43px;
+  top: 20%;
+}
+
 /* Стилизация подвала */
 .footer {
   padding-bottom: 50px;

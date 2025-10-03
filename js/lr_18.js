@@ -1,38 +1,29 @@
-document.getElementById('submit-button').addEventListener('click', function () {
-    // Сбрасываем предыдущие ошибки
-    const errorMessages = document.querySelectorAll('.error-message');
-    errorMessages.forEach(msg => msg.style.display = 'none');
+document.getElementById('connection-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Предотвратить стандартную отправку формы
 
-    const inputs = document.querySelectorAll('.connection__input');
-    let valid = true;
+    const name = document.getElementById('name-2').value;
+    const phone = document.getElementById('phone-2').value;
+    const email = document.getElementById('email-2').value;
+    const password = document.getElementById('password-2').value;
+    const confirmPassword = document.getElementById('confirm-password-2').value;
+    const consentCheckbox = document.getElementById('consent-2');
+    const consent = consentCheckbox.checked ? "Да" : "Нет";
+    
+    // Проверка на согласие
+    // if (consent = "Нет") {
+    //     alert("Вы должны согласиться на обработку данных!");
+    //     return; // Прерываем выполнение
+    // }
 
-    inputs.forEach(input => {
-        if (!input.checkValidity()) {
-            valid = false;
-            input.classList.add('error');
-            const errorMessage = document.getElementById(input.id + '-error');
-            if (errorMessage) {
-                errorMessage.style.display = 'block';
-            }
-        } else {
-            input.classList.remove('error');
-        }
-    });
-
-    const consent = document.getElementById('consent');
-    if (!consent.checked) {
-        valid = false;
-        const consentError = document.createElement('div');
-        consentError.className = 'error-message';
-        consentError.textContent = 'Необходимо дать согласие на обработку персональных данных.';
-        document.querySelector('.popup__down__agree').appendChild(consentError);
+    // Проверка на совпадение паролей
+    if (password !== confirmPassword) {
+        alert("Пароли не совпадают!");
+        return; // Прерываем выполнение
     }
 
-    const successMessage = document.getElementById('success-message');
-    if (valid) {
-        // Здесь можно добавить код для отправки формы, например, AJAX-запрос
-        successMessage.style.display = 'block';
-    } else {
-        successMessage.style.display = 'none';
-    }
+
+
+    alert(`Данные формы:\n\nИмя: ${name}\nТелефон: ${phone}\nEmail: ${email}\nПароль: ${password}\nСогласие на обработку: ${consent}`);
+
+    this.reset(); // Очистить форму
 });

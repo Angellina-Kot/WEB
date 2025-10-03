@@ -430,7 +430,7 @@
                 </div>
             </section>
 
-            <!-- Блок "Связаться с нами" -->
+            <!-- Блок Регистрация (Связаться с нами) -->
             <!-- <section id="connection" class="connection">
                 <div class="container">
                     <div class="connection__top">
@@ -487,41 +487,81 @@
             <section id="connection" class="connection">
                 <div class="container">
                     <div class="connection__top">
-                        <h3 class="connection__subtitle">Связаться с нами</h3>
+                        <h3 class="connection__subtitle">Регистрация</h3>
+                        <a class="about__img-link-1 connection__arrow-container" id="scrollToTop">
+                            <img class="connection__arrow" src="./img/about-arrow-down.png" alt="arrow">
+                        </a>
                     </div>
 
-                    <div class="connection__inner">
+                    <form class="connection__inner" id="connection-form">
                         <div class="connection__name">
-                            <p class="connection__title">Меня зовут</p>
-                            <input class="connection__input" type="text" id="name" placeholder="Караникола Евгений"
-                                required>
-                            <div class="error-message" id="name-error">Пожалуйста, введите ваше имя.</div>
+                            <label class="connection__title" for="name-2">Меня зовут</label>
+                            <input class="connection__input" type="text" id="name-2" name="name"
+                                placeholder="Караникола Евгений" required>
                         </div>
+
                         <div class="connection__number">
-                            <p class="connection__title">Мой номер</p>
-                            <input id="phone-input" class="connection__input" type="tel" placeholder="+7 (___) ___-____"
-                                required pattern="^\+7 \(\d{3}\) \d{3}-\d{4}$" title="Формат: +7 (999) 999-9999">
-                            <div class="error-message" id="phone-error">Пожалуйста, введите корректный номер.</div>
+                            <label class="connection__title" for="phone-2">Мой номер</label>
+                            <input id="phone-2" class="connection__input" type="tel" name="phone"
+                                placeholder="+7 (___) ___-__-__" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                                title="Формат: +7 (999) 999-99-99" required>
                         </div>
+
                         <div class="connection__mail">
-                            <p class="connection__title">Мой email</p>
-                            <input class="connection__input" type="email" id="email" placeholder="example@gmail.com"
-                                required>
-                            <div class="error-message" id="email-error">Пожалуйста, введите корректный email.</div>
+                            <label class="connection__title" for="email-2">Мой email</label>
+                            <input class="connection__input" type="email" id="email-2" name="email"
+                                placeholder="example@gmail.com" required>
                         </div>
+
+                        <div class="connection__password">
+                            <label class="connection__title" for="password-2">Пароль</label>
+                            <input class="connection__input" type="password" id="password-2" name="password"
+                                placeholder="Введите пароль" required>
+                        </div>
+
+                        <div class="connection__confirm-password">
+                            <label class="connection__title" for="confirm-password-2">Подтвердите пароль</label>
+                            <input class="connection__input" type="password" id="confirm-password-2"
+                                name="confirm-password" placeholder="Подтвердите пароль" required>
+                        </div>
+
                         <div class="connection__form">
                             <div class="popup__down__agree">
                                 <label class="custom-checkbox">
-                                    <input type="checkbox" id="consent" required>
+                                    <input type="checkbox" id="consent-2" name="consent" required>
                                     <span class="checkbox-icon"></span>
                                 </label>
                                 <p class="popup__down__agree-text">Согласие на обработку персональных данных</p>
                             </div>
-                            <button type="button" class="button button__bottom" id="submit-button">Оформить
-                                заявку</button>
-                            <div class="success" id="success-message">Форма успешно отправлена!</div>
+                            <button type="submit" class="button button__bottom">Оформить заявку</button>
                         </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="login" class="login">
+                <div class="container">
+                    <div class="login__top">
+                        <h3 class="login__subtitle">Авторизация</h3>
                     </div>
+
+                    <form class="login__inner" id="login-form">
+                        <div class="login__mail">
+                            <label class="login__title" ">Мой email</label>
+                            <input class="login__input" type="email" id="email-3" name="email"
+                                placeholder="example@gmail.com" required>
+                        </div>
+
+                        <div class="login__password">
+                            <label class="login__title" >Пароль</label>
+                            <input class="login__input" type="password" id="password-3" name="password"
+                                placeholder="Введите пароль" required>
+                        </div>
+
+                        <div class="login__form">
+                            <button type="submit" class="button button__bottom">Войти</button>
+                        </div>
+                    </form>
                 </div>
             </section>
 
@@ -543,13 +583,15 @@
                                         <p class="popup__title">
                                             Меня зовут
                                         </p>
-                                        <input class="popup__input" id="name-1" type="text" placeholder="Меня зовут" required>
+                                        <input class="popup__input" id="name-1" type="text" placeholder="Меня зовут"
+                                            required>
                                     </div>
                                     <div class="popup__name">
                                         <p class="popup__title">
                                             Мой email
                                         </p>
-                                        <input class="popup__input" id="email-1" type="email" placeholder="example@gmail.com">
+                                        <input class="popup__input" id="email-1" type="email"
+                                            placeholder="example@gmail.com">
                                     </div>
                                     <div class="popup__name">
                                         <p class="popup__title">
@@ -565,7 +607,7 @@
                                             <input type="checkbox" id="urgent-toggle-1" ">
                                             <span class=" slider-1"></span> </label>
                                     </div>
-                                    
+
                                     <p class="popup__check_down">Насколько она срочная?</p>
                                     <i>(перетащите ползунок в зависимости от сросности)</i>
                                     <div class="slider-wrapper">
