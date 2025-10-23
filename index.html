@@ -53,9 +53,14 @@
                                     </a>
                                 </li>
                                 <li class="menu__item">
-                                    <a class="menu__link" data-goto=".clients" href="#">
-                                        Контакты
+                                    <a class="menu__link"  href="#">
+                                        ещё
                                     </a>
+                                    <ul class="dropdown">
+                                        <li><a class="menu__link" href="#connection">Регистрация</a></li>
+                                        <li><a class="menu__link" href="#login">Авторизация</a></li>
+                                        <li><a class="menu__link" href="#cart-1">Корзина</a></li>
+                                    </ul>
                                 </li>
                                 <li class="menu__item">
                                     <div class="menu__message">
@@ -221,6 +226,7 @@
                             <h4 class="services__text">
                                 Работа с информацией
                             </h4>
+                            <div class="service-price">15 000 у.е.</div>
                             <ul class="services__box-list">
                                 <li class="services__box-item">
                                     - Поиск и проверка информации
@@ -236,7 +242,7 @@
                                 </li>
                             </ul>
                             <div class="services__hover-button" id="btn__top">
-                                <button class="btn btn-more">Оформить заявку</button>
+                                <button class="btn btn-more" data-id="1">Добавить в корзину</button>
                             </div>
                         </div>
                         <div class="services__box">
@@ -244,6 +250,7 @@
                             <h4 class="services__text">
                                 Розыск
                             </h4>
+                            <div class="service-price">15 000 у.е.</div>
                             <ul class="services__box-list">
                                 <li class="services__box-item">
                                     - Розыск должника/мошенника
@@ -259,7 +266,7 @@
                                 </li>
                             </ul>
                             <div class="services__hover-button">
-                                <button class="btn btn-more">Оформить заявку</button>
+                                <button class="btn btn-more" data-id="2">Добавить в корзину</button>
                             </div>
                         </div>
                         <div class="services__box">
@@ -267,6 +274,7 @@
                             <h4 class="services__text">
                                 Слежка и наблюдение
                             </h4>
+                            <div class="service-price">15 000 у.е.</div>
                             <ul class="services__box-list">
                                 <li class="services__box-item">
                                     - Наружное наблюдение </li>
@@ -276,14 +284,15 @@
                                     - Проверка образа жизни ребенка </li>
                             </ul>
                             <div class="services__hover-button">
-                                <button class="btn btn-more">Оформить заявку</button>
+                                <button class="btn btn-more" data-id="3">Добавить в корзину</button>
                             </div>
                         </div>
-                        <div class="services__box">
+                        <div class="services__box" id="cart-1">
                             <img class="services__img" src="./img/Бизнес-разведка.png" alt="services img">
                             <h4 class="services__text">
                                 Бизнес-разведка
                             </h4>
+                            <div class="service-price">15 000 у.е.</div>
                             <ul class="services__box-list">
                                 <li class="services__box-item">
                                     - Проверка контрагентов
@@ -299,7 +308,7 @@
                                 </li>
                             </ul>
                             <div class="services__hover-button">
-                                <button class="btn btn-more">Оформить заявку</button>
+                                <button class="btn btn-more" data-id="4">Добавить в корзину</button>
                             </div>
                         </div>
                         <div class="services__box">
@@ -307,6 +316,7 @@
                             <h4 class="services__text">
                                 Сопровождение гражданских дел
                             </h4>
+                            <div class="service-price">15 000 у.е.</div>
                             <ul class="services__box-list">
                                 <li class="services__box-item">
                                     1. Оказание юридической помощи
@@ -317,12 +327,9 @@
                                 <li class="services__box-item">
                                     3. Содействие правоохранительным органам
                                 </li>
-                                <li class="services__box-item">
-                                    4. Досудебное урегулирование конфликтов.
-                                </li>
                             </ul>
                             <div class="services__hover-button">
-                                <button class="btn btn-more">Оформить заявку</button>
+                                <button class="btn btn-more" data-id="5">Добавить в корзину</button>
                             </div>
                         </div>
                         <div class="services__box">
@@ -330,6 +337,7 @@
                             <h4 class="services__text">
                                 Защита
                             </h4>
+                            <div class="service-price">15 000 у.е.</div>
                             <ul class="services__box-list">
                                 <li class="services__box-item">
                                     1. Защита при шантаже и угрозах
@@ -342,12 +350,45 @@
                                 </li>
                             </ul>
                             <div class="services__hover-button">
-                                <button class="btn btn-more">Оформить заявку</button>
+                                <button class="btn btn-more" data-id="6">Добавить в корзину</button>
                             </div>
                         </div>
                     </div>
+                    <div class="cart-1">
+                        <button class="cart-trigger">
+                            <i class="fas fa-shopping-cart"></i>
+                            Корзина <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                    <!-- Кнопка корзина -->
+
                 </div>
             </section>
+
+
+
+            <!-- Модальное окно корзины -->
+            <div class="cart-modal" id="cart-modal">
+                <div class="cart-content">
+                    <div class="cart-header">
+                        <h2 class="cart-title">Корзина</h2>
+                        <button class="close-cart">&times;</button>
+                    </div>
+
+                    <div class="cart-items" id="cart-items">
+                        <!-- Товары в корзине будут добавлены через JavaScript -->
+                    </div>
+
+                    <div class="cart-footer">
+                        <div class="cart-total" id="cart-total">Итого: 0 у.е.</div>
+                        <div class="cart-buttons">
+                            <button class="btn btn-continue">Продолжить выбор</button>
+                            <button class="btn btn-checkout">Оформить заказ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- Блок "Как мы работаем" -->
             <section id="work" class="work">
@@ -495,32 +536,32 @@
 
                     <form class="connection__inner" id="connection-form">
                         <div class="connection__name">
-                            <label class="connection__title" for="name-2">Меня зовут</label>
+                            <label class="connection__title" for="name-2">Меня зовут*</label>
                             <input class="connection__input" type="text" id="name-2" name="name"
                                 placeholder="Караникола Евгений" required>
                         </div>
 
                         <div class="connection__number">
-                            <label class="connection__title" for="phone-2">Мой номер</label>
+                            <label class="connection__title" for="phone-2">Мой номер*</label>
                             <input id="phone-2" class="connection__input" type="tel" name="phone"
                                 placeholder="+7 (___) ___-__-__" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
                                 title="Формат: +7 (999) 999-99-99" required>
                         </div>
 
                         <div class="connection__mail">
-                            <label class="connection__title" for="email-2">Мой email</label>
+                            <label class="connection__title" for="email-2">Мой email*</label>
                             <input class="connection__input" type="email" id="email-2" name="email"
                                 placeholder="example@gmail.com" required>
                         </div>
 
                         <div class="connection__password">
-                            <label class="connection__title" for="password-2">Пароль</label>
+                            <label class="connection__title" for="password-2">Пароль*</label>
                             <input class="connection__input" type="password" id="password-2" name="password"
                                 placeholder="Введите пароль" required>
                         </div>
 
                         <div class="connection__confirm-password">
-                            <label class="connection__title" for="confirm-password-2">Подтвердите пароль</label>
+                            <label class="connection__title" for="confirm-password-2">Подтвердите пароль*</label>
                             <input class="connection__input" type="password" id="confirm-password-2"
                                 name="confirm-password" placeholder="Подтвердите пароль" required>
                         </div>
@@ -570,7 +611,7 @@
             <div id="popup" class="popup">
                 <div class="container">
                     <div class="popup__body">
-                        <form>
+                        <form class="popup-1__inner" id="popup-1-form">
                             <div class="popup__top">
                                 <h2 class="popup__subtitle">
                                     Оставить заявку
@@ -582,21 +623,21 @@
                                 <div class="popup__form">
                                     <div class="popup__name">
                                         <p class="popup__title">
-                                            Меня зовут
+                                            Меня зовут*
                                         </p>
                                         <input class="popup__input" id="name-1" type="text" placeholder="Меня зовут"
                                             required>
                                     </div>
                                     <div class="popup__name">
                                         <p class="popup__title">
-                                            Мой email
+                                            Мой email*
                                         </p>
                                         <input class="popup__input" id="email-1" type="email"
                                             placeholder="example@gmail.com">
                                     </div>
                                     <div class="popup__name">
                                         <p class="popup__title">
-                                            Мой номер
+                                            Мой номер*
                                         </p>
                                         <input class="popup__input" id="phone-1" type="text" placeholder="Мой номер">
                                     </div>
@@ -664,10 +705,6 @@
                 <div class="timer" id="timer"></div>
             </div>
 
-
-
-
-
         </main>
         <!-- Подвал -->
         <footer class="footer" id="footer">
@@ -718,7 +755,83 @@
     <script src="./js/services_img.js"></script>
     <script src="./js/action.js"></script>
     <script src="./js/lr_17.js"></script>
-    <script src="./js/lr_18.js"></script>
+    <script src="./js/lr_18_form-2_form-3.js"></script>
+    <script src="./js/cart.js"></script>
+
+    <!-- скрипт для корзины -->
+    <script src="./js/favorites.js"></script>
+
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const cartTrigger = document.querySelector('.cart-trigger');
+        //     const cartModal = document.querySelector('.cart-modal');
+        //     const closeCart = document.querySelector('.close-cart');
+        //     const continueBtn = document.querySelector('.btn-continue');
+        //     const removeButtons = document.querySelectorAll('.item-remove');
+        //     const cartCount = document.querySelector('.cart-count');
+
+        //     // Открытие корзины
+        //     cartTrigger.addEventListener('click', function () {
+        //         cartModal.classList.add('active');
+        //     });
+
+        //     // Закрытие корзины
+        //     function closeCartModal() {
+        //         cartModal.classList.remove('active');
+        //     }
+
+        //     closeCart.addEventListener('click', closeCartModal);
+        //     continueBtn.addEventListener('click', closeCartModal);
+
+        //     // Закрытие по клику вне модального окна
+        //     cartModal.addEventListener('click', function (e) {
+        //         if (e.target === cartModal) {
+        //             closeCartModal();
+        //         }
+        //     });
+
+        //     // Удаление товара из корзины
+        //     removeButtons.forEach(button => {
+        //         button.addEventListener('click', function () {
+        //             const item = this.closest('.cart-item');
+        //             item.style.opacity = '0';
+        //             setTimeout(() => {
+        //                 item.remove();
+        //                 updateCartTotal();
+        //                 updateCartCount();
+        //             }, 300);
+        //         });
+        //     });
+
+        //     // Обновление общей суммы
+        //     function updateCartTotal() {
+        //         const items = document.querySelectorAll('.cart-item');
+        //         let total = 0;
+
+        //         items.forEach(item => {
+        //             const priceText = item.querySelector('.item-price').textContent;
+        //             const price = parseInt(priceText.replace(/\D/g, ''));
+        //             total += price;
+        //         });
+
+        //         document.querySelector('.cart-total').textContent = `Итого: ${total.toLocaleString()} у.е.`;
+        //     }
+
+        //     // Обновление счетчика товаров
+        //     function updateCartCount() {
+        //         const items = document.querySelectorAll('.cart-item');
+        //         cartCount.textContent = items.length;
+
+        //         // Если корзина пуста, показываем сообщение
+        //         const cartItems = document.querySelector('.cart-items');
+        //         if (items.length === 0) {
+        //             cartItems.innerHTML = '<div class="empty-cart">Корзина пуста</div>';
+        //         }
+        //     }
+        // });
+
+
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детективное агентство - Услуги</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color1: #2c3e50;
+            --color2: #34495e;
+            --color3: #ffffff;
+            --color4: #7f8c8d;
+            --color5: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #F3F6F9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Стили для секции услуг */
+        .services {
+            background: #F3F6F9;
+            padding: 10px 10px 10px 10px;
+            border-radius: 40px;
+            padding-bottom: 50px;
+        }
+
+        .services__info {
+            align-items: center;
+            display: flex;
+            padding-top: 100px;
+            padding-bottom: 80px;
+            justify-content: space-between;
+        }
+
+        .services__info span {
+            display: block;
+            width: 140px;
+            height: 60px;
+            max-height: 100%;
+            max-width: 100%;
+            background: #FFFFFF;
+            border-radius: 100px;
+            position: relative;
+        }
+
+        .services__info span::before {
+            position: absolute;
+            content: "";
+            width: 1px;
+            height: 32px;
+            left: 50%;
+            top: 25%;
+            background: var(--color3);
+        }
+
+        .services__title {
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            font-size: 94px;
+            line-height: 100%;
+            color: var(--color1);
+        }
+
+        .services__subtitle {
+            max-width: 325px;
+            font-size: 30px;
+            line-height: 120%;
+            color: var(--color4);
+        }
+
+        .services__inner {
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        .services__box {
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            width: 100%;
+            height: 517px;
+            padding: 10px 10px 40px 10px;
+            border-radius: 40px;
+            margin: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .services__box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .services__text {
+            text-align: left;
+            font-weight: 400;
+            font-size: 34px;
+            line-height: 90%;
+            color: var(--color1);
+            margin-bottom: 15px;
+            min-height: 62px;
+        }
+
+        .services__img {
+            display: inline-block;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border-radius: 30px;
+        }
+
+        .services__box-list {
+            text-align: left;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .services__box-item {
+            font-size: 17px;
+            line-height: 140%;
+            margin-bottom: 10px;
+            color: var(--color4);
+        }
+
+        .services__hover-button {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .services__box:hover .services__hover-button {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .service-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--color1);
+            margin: 10px 0;
+            text-align: right;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 100px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-more {
+            width: 260px;
+            height: 57px;
+            background: var(--color1);
+            color: var(--color3);
+        }
+
+        .btn-more:hover {
+            background: var(--color2);
+        }
+
+        .prev-slide,
+        .next-slide {
+            padding: 15px 0 0 0;
+            width: 70px;
+            height: 30px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        span.services__arrow {
+            width: 140px;
+            height: 60px;
+            display: flex;
+            justify-items: center;
+            padding-top: 5px;
+        }
+
+        /* Стили для корзины */
+        .cart-trigger {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--color1);
+            color: var(--color3);
+            border: none;
+            border-radius: 100px;
+            padding: 15px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-trigger:hover {
+            background: var(--color2);
+            transform: translateY(-3px);
+        }
+
+        .cart-count {
+            background: var(--color5);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 14px;
+        }
+
+        /* Модальное окно корзины */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: #F3F6F9;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 40px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--color4);
+        }
+
+        .cart-title {
+            font-size: 48px;
+            line-height: 100%;
+            color: var(--color1);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--color4);
+            transition: color 0.3s ease;
+        }
+
+        .close-cart:hover {
+            color: var(--color1);
+        }
+
+        .cart-items {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 22px;
+            color: var(--color1);
+            margin-bottom: 5px;
+        }
+
+        .item-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color1);
+        }
+
+        .item-remove {
+            background: none;
+            border: none;
+            color: var(--color5);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item-remove:hover {
+            background: rgba(231, 76, 60, 0.1);
+            color: #c0392b;
+        }
+
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--color4);
+        }
+
+        .cart-total {
+            font-size: 28px;
+            color: var(--color1);
+            font-weight: bold;
+        }
+
+        .cart-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-continue {
+            background: white;
+            color: var(--color1);
+            border: 1px solid var(--color1);
+        }
+
+        .btn-continue:hover {
+            background: #f0f0f0;
+        }
+
+        .btn-checkout {
+            background: var(--color1);
+            color: var(--color3);
+        }
+
+        .btn-checkout:hover {
+            background: var(--color2);
+            transform: translateY(-2px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--color4);
+            font-size: 20px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .services__title {
+                font-size: 60px;
+            }
+
+            .services__info {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .services__inner {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .cart-title {
+                font-size: 36px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-remove {
+                align-self: flex-end;
+                margin-top: 10px;
+            }
+
+            .cart-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .cart-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .btn {
+                flex: 1;
+                text-align: center;
+            }
+        }
+
+        /* Уведомление о добавлении в корзину */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--color1);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1002;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Секция услуг -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="services__info">
+                <h2 class="services__title">
+                    Услуги
+                </h2>
+                <h6 class="services__subtitle">
+                    Когда другие бессильны - мы делаем
+                </h6>
+                <span class="services__arrow">
+                    <button class="prev-slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="next-slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </span>
+            </div>
+            <div class="services__inner" id="services-container">
+                <!-- Услуги будут загружены через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Кнопка для открытия корзины -->
+    <button class="cart-trigger">
+        <i class="fas fa-shopping-cart"></i>
+        Корзина <span class="cart-count">0</span>
+    </button>
+
+    <!-- Уведомление -->
+    <div class="notification" id="notification">
+        Товар добавлен в корзину!
+    </div>
+
+    <!-- Модальное окно корзины -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 class="cart-title">Корзина</h2>
+                <button class="close-cart">&times;</button>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <!-- Товары в корзине будут добавлены через JavaScript -->
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total" id="cart-total">Итого: 0 у.е.</div>
+                <div class="cart-buttons">
+                    <button class="btn btn-continue">Продолжить выбор</button>
+                    <button class="btn btn-checkout">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JSON данные об услугах
+        const servicesData = {
+            "services": [
+                {
+                    "id": 1,
+                    "title": "Работа с информацией",
+                    "price": 15000,
+                    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "features": [
+                        "Поиск и проверка информации",
+                        "Составление персонального досье",
+                        "Работа с репутацией (защита персональных данных)",
+                        "Информация по номеру телефона"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Розыск",
+                    "price": 15000,
+                    "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "features": [
+                        "Розыск должника/мошенника",
+                        "Поиск пропавших людей",
+                        "Поиск родственников",
+                        "Поиск имущества"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Слежка и наблюдение",
+                    "price": 15000,
+                    "image": "https://images.unsplash.com/photo-1558618666-fcd25856cd49?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "features": [
+                        "Наружное наблюдение",
+                        "Контрнаблюдение",
+                        "Проверка образа жизни ребенка"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Бизнес-разведка",
+                    "price": 15000,
+                    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "features": [
+                        "Проверка контрагентов",
+                        "Досье на компанию",
+                        "Внештатная служба безопасности",
+                        "Корпоративное расследование"
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Сопровождение гражданских дел",
+                    "price": 15000,
+                    "image": "https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "features": [
+                        "Оказание юридической помощи",
+                        "Частное расследование преступлений",
+                        "Содействие правоохранительным органам"
+                    ]
+                },
+                {
+                    "id": 6,
+                    "title": "Защита",
+                    "price": 15000,
+                    "image": "https://images.unsplash.com/photo-1589656384667-54e845b4f4ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "features": [
+                        "Защита при шантаже и угрозах",
+                        "Безопасность семьи и детей",
+                        "Помощь в подготовке и сопровождение в поездках"
+                    ]
+                }
+            ]
+        };
+
+        // Инициализация приложения
+        document.addEventListener('DOMContentLoaded', function () {
+            const servicesContainer = document.getElementById('services-container');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.querySelector('.cart-count');
+            const cartModal = document.getElementById('cart-modal');
+            const cartTrigger = document.querySelector('.cart-trigger');
+            const closeCart = document.querySelector('.close-cart');
+            const continueBtn = document.querySelector('.btn-continue');
+            const checkoutBtn = document.querySelector('.btn-checkout');
+            const notification = document.getElementById('notification');
+
+            let cart = [];
+
+            // Загрузка услуг из JSON
+            function loadServices() {
+                servicesContainer.innerHTML = '';
+
+                servicesData.services.forEach(service => {
+                    const serviceElement = document.createElement('div');
+                    serviceElement.className = 'services__box';
+                    serviceElement.innerHTML = `
+                        <img class="services__img" src="${service.image}" alt="${service.title}">
+                        <h4 class="services__text">${service.title}</h4>
+                        <div class="service-price">${service.price.toLocaleString()} у.е.</div>
+                        <ul class="services__box-list">
+                            ${service.features.map(feature => `<li class="services__box-item">${feature}</li>`).join('')}
+                        </ul>
+                        <div class="services__hover-button">
+                            <button class="btn btn-more" data-id="${service.id}">Добавить в корзину</button>
+                        </div>
+                    `;
+                    servicesContainer.appendChild(serviceElement);
+                });
+
+                // Добавление обработчиков событий для кнопок "Добавить в корзину"
+                document.querySelectorAll('.btn-more').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const serviceId = parseInt(this.getAttribute('data-id'));
+                        addToCart(serviceId);
+                    });
+                });
+            }
+
+            // Добавление услуги в корзину
+            function addToCart(serviceId) {
+                const service = servicesData.services.find(s => s.id === serviceId);
+
+                if (service) {
+                    const existingItem = cart.find(item => item.id === serviceId);
+
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id: service.id,
+                            title: service.title,
+                            price: service.price,
+                            quantity: 1
+                        });
+                    }
+
+                    updateCart();
+                    showNotification();
+                }
+            }
+
+            // Удаление услуги из корзины
+            function removeFromCart(serviceId) {
+                cart = cart.filter(item => item.id !== serviceId);
+                updateCart();
+            }
+
+            // Обновление отображения корзины
+            function updateCart() {
+                cartItems.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<div class="empty-cart">Корзина пуста</div>';
+                } else {
+                    cart.forEach(item => {
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.className = 'cart-item';
+                        cartItemElement.innerHTML = `
+                            <div class="item-info">
+                                <h3 class="item-name">${item.title}</h3>
+                                <div class="item-price">${item.price.toLocaleString()} у.е. x ${item.quantity}</div>
+                            </div>
+                            <button class="item-remove" data-id="${item.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        `;
+                        cartItems.appendChild(cartItemElement);
+                    });
+
+                    // Добавление обработчиков событий для кнопок удаления
+                    document.querySelectorAll('.item-remove').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const serviceId = parseInt(this.getAttribute('data-id'));
+                            removeFromCart(serviceId);
+                        });
+                    });
+                }
+
+                // Обновление общей суммы и счетчика
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `Итого: ${total.toLocaleString()} у.е.`;
+                cartCount.textContent = cart.reduce((count, item) => count + item.quantity, 0);
+            }
+
+            // Показать уведомление
+            function showNotification() {
+                notification.classList.add('active');
+                setTimeout(() => {
+                    notification.classList.remove('active');
+                }, 3000);
+            }
+
+            // Открытие корзины
+            cartTrigger.addEventListener('click', function () {
+                cartModal.classList.add('active');
+            });
+
+            // Закрытие корзины
+            function closeCartModal() {
+                cartModal.classList.remove('active');
+            }
+
+            closeCart.addEventListener('click', closeCartModal);
+            continueBtn.addEventListener('click', closeCartModal);
+
+            // Закрытие по клику вне модального окна
+            cartModal.addEventListener('click', function (e) {
+                if (e.target === cartModal) {
+                    closeCartModal();
+                }
+            });
+
+            // Оформление заказа
+            checkoutBtn.addEventListener('click', function () {
+                if (cart.length === 0) {
+                    alert('Корзина пуста!');
+                    return;
+                }
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                alert(`Заказ оформлен! Сумма заказа: ${total.toLocaleString()} у.е.\nС вами свяжется наш менеджер в ближайшее время.`);
+                cart = [];
+                updateCart();
+                closeCartModal();
+            });
+
+            // Инициализация
+            loadServices();
+            updateCart();
+        });
+    </script>
+</body>
+
+</html>

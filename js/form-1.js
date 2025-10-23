@@ -23,70 +23,72 @@ document.getElementById('return-to-site').addEventListener('click', function () 
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Возвращаемся плавно в начало страницы
 });
 
+// document.getElementById('login-form').addEventListener('submit', function (event) {
+//     event.preventDefault(); // Предотвратить стандартную отправку формы
+    //валидация полей формы
+    document.getElementById('submit').addEventListener('click', function (e) {
+        e.preventDefault(); // Отменяем стандартное поведение (отправку формы)
 
-//валидация полей формы
-document.getElementById('submit').addEventListener('click', function (e) {
-    e.preventDefault(); // Отменяем стандартное поведение (отправку формы)
-
-    const nameInput = document.getElementById('name-1');
-    const emailInput = document.getElementById('email-1');
-    const phoneInput = document.getElementById('phone-1');
-    const commentInput = document.getElementById('comment-1');
-    const urgentToggle = document.getElementById('urgent-toggle-1');
-    const consentCheckbox = document.getElementById('consent-1');
-    const sliderValueElement = document.getElementById('slider-value');
+        const nameInput = document.getElementById('name-1');
+        const emailInput = document.getElementById('email-1');
+        const phoneInput = document.getElementById('phone-1');
+        const commentInput = document.getElementById('comment-1');
+        const urgentToggle = document.getElementById('urgent-toggle-1');
+        const consentCheckbox = document.getElementById('consent-1');
+        const sliderValueElement = document.getElementById('slider-value');
 
 
-    let valid = true;
-    let messages = [];
+        let valid = true;
+        let messages = [];
 
-    // Проверка имени
-    if (nameInput.value.trim() === '') {
-        valid = false;
-        messages.push("Введите ваше имя.");
-    }
+        // Проверка имени
+        if (nameInput.value.trim() === '') {
+            valid = false;
+            messages.push("Введите ваше имя.");
+        }
 
-    // Проверка email
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/i;
-    if (emailInput.value.trim() === '') {
-        valid = false;
-        messages.push("Введите email.");
-    } else if (!emailPattern.test(emailInput.value.trim())) {
-        valid = false;
-        messages.push("Введите корректный email.");
-    }
+        // Проверка email
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/i;
+        if (emailInput.value.trim() === '') {
+            valid = false;
+            messages.push("Введите email.");
+        } else if (!emailPattern.test(emailInput.value.trim())) {
+            valid = false;
+            messages.push("Введите корректный email.");
+        }
 
-    // Проверка телефона
-    if (phoneInput.value.trim() === '') {
-        valid = false;
-        messages.push("Введите номер телефона.");
-    }
+        // Проверка телефона
+        if (phoneInput.value.trim() === '') {
+            valid = false;
+            messages.push("Введите номер телефона.");
+        }
 
-    if (valid) {
-        // Извлечение данных
-        const name = nameInput.value.trim();
-        const email = emailInput.value.trim();
-        const phone = phoneInput.value.trim();
-        const urgentStatus = urgentToggle.checked;
-        const comment = commentInput.value.trim();
-        // Извлекаем текст
-        const sliderValueText = sliderValueElement.textContent;
+        if (valid) {
+            // Извлечение данных
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const urgentStatus = urgentToggle.checked;
+            const comment = commentInput.value.trim();
+            // Извлекаем текст
+            const sliderValueText = sliderValueElement.textContent;
 
-        // Формирование сообщения
-        let message1 = "Имя: " + name + "\n";
-        message1 += "Email: " + email + "\n";
-        message1 += "Телефон: " + phone + "\n";
-        message1 += "Срочная задача: " + (urgentStatus ? "Да" : "Нет") + "\n";
-        message1 += "Комментарий: " + comment + "\n";
-        message1 += "Согласие: " + (consentCheckbox.checked ? "Да" : "Нет") + "\n";
-        message1 += "Важность: " + sliderValueText;
-        // Вывод результата
-        alert(message1);
-    } else {
-        alert(messages.join("\n"));
-    }
-});
-
+            // Формирование сообщения
+            let message1 = "Имя: " + name + "\n";
+            message1 += "Email: " + email + "\n";
+            message1 += "Телефон: " + phone + "\n";
+            message1 += "Срочная задача: " + (urgentStatus ? "Да" : "Нет") + "\n";
+            message1 += "Комментарий: " + comment + "\n";
+            message1 += "Согласие: " + (consentCheckbox.checked ? "Да" : "Нет") + "\n";
+            message1 += "Важность: " + sliderValueText;
+            // Вывод результата
+            alert(message1);
+        } else {
+            alert(messages.join("\n"));
+        }
+    });
+//     this.reset(); // Очистить форму
+// });
 
 
 
