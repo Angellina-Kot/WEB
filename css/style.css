@@ -1103,15 +1103,15 @@ span.services__arrow {
   gap: 15px;
 }
 
-.btn-cart {
-  /* text-align: center; */
+/* .btn-cart {
+  text-align: center;
   padding: 15px 25px;
   border: none;
   border-radius: 100px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-}
+} */
 
 .btn-continue,
 .btn-clear {
