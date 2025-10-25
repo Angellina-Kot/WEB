@@ -1,3 +1,5 @@
+
+
 // Глобальная переменная для хранения данных об услугах
 let servicesData = {};
 let cart = []; // Выносим cart в глобальную область видимости
@@ -97,25 +99,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     const checkoutBtn = document.querySelector('.btn-checkout');
     const clearCartBtn = document.getElementById('clear-cart');
 
-    // Создаем элемент для уведомлений, если его нет
-    let notification = document.getElementById('notification');
-    if (!notification) {
-        notification = document.createElement('div');
-        notification.id = 'notification';
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4CAF50;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 5px;
-            z-index: 10000;
-            display: none;
-        `;
-        document.body.appendChild(notification);
-    }
-
     // Инициализация кнопок "Добавить в корзину"
     function initializeAddToCartButtons() {
         const addToCartButtons = document.querySelectorAll('.btn-more');
@@ -199,12 +182,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                 cartItemElement.innerHTML = `
                     <div class="item-info">
                         <h3 class="item-name">${item.title}</h3>
-                        <div class="item-price">${item.price.toLocaleString()} у.е.</div>
-                        <div class="item-quantity-controls">
-                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
-                        </div>
+                        <div class="item-price">${item.price.toLocaleString()} у.е.  x${item.quantity}</div>
+                        
                     </div>
                     <button class="item-remove" data-id="${item.id}">
                        &times;
@@ -221,26 +200,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 });
             });
 
-            // Обработчики для кнопок изменения количества
-            document.querySelectorAll('.quantity-btn.minus').forEach(button => {
-                button.addEventListener('click', function () {
-                    const serviceId = parseInt(this.getAttribute('data-id'));
-                    const item = cart.find(item => item.id === serviceId);
-                    if (item) {
-                        updateQuantity(serviceId, item.quantity - 1);
-                    }
-                });
-            });
-
-            document.querySelectorAll('.quantity-btn.plus').forEach(button => {
-                button.addEventListener('click', function () {
-                    const serviceId = parseInt(this.getAttribute('data-id'));
-                    const item = cart.find(item => item.id === serviceId);
-                    if (item) {
-                        updateQuantity(serviceId, item.quantity + 1);
-                    }
-                });
-            });
+            
         }
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
